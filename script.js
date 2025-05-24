@@ -146,8 +146,7 @@ function startTimer() {
       clearInterval(timer);
       timer = null;
       // Automatisch als nicht erraten werten und Möglichkeit zum Weitermachen geben
-      alert("Zeit abgelaufen!");
-      handleNotGuessed(); // Rundenergebnis: nicht erraten
+      endRound();
       // Hinweis: Nach Zeitablauf muss der nächste Spieler manuell per Button gestartet werden
     }
   }, 1000);
@@ -160,7 +159,25 @@ function stopTimer() {
     timer = null;
   }
 }
+function endRound() {
+  guessedBtn.disabled = true;
+  notGuessedBtn.disabled = true;
+  randomNameBtn.disabled = true;
+  showNameBtn.disabled = true;
+  manualNameInput.disabled = true;
 
+  timerDisplayEl.textContent = "0s";
+  alert("Zeit abgelaufen!");
+
+  if (players.length > 1) {
+    nextPlayerBtn.disabled = false;
+  } else {
+    // Einzelspieler: neue Runde direkt möglich
+    randomNameBtn.disabled = false;
+    showNameBtn.disabled = false;
+    manualNameInput.disabled = false;
+  }
+}
 // Neuen Namen aus der Kategorie ziehen und anzeigen (zufällig)
 function showRandomName() {
   // Wenn keine Namen mehr übrig sind, Liste neu mischen (alle Namen wieder verfügbar machen)
