@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wer bin ich? - Spiel</title>
+  <!-- Verknüpfung der CSS-Datei -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Startbereich: Auswahl von Modus, Spielern, Kategorie, Timer -->
+  <div id="startScreen">
+    <h1>Wer bin ich? – Spielstart</h1>
+    
+    <!-- Modusauswahl: Einzelspieler oder Mehrspieler -->
+    <div class="mode-select">
+      <label>
+        <input type="radio" name="mode" value="single" id="modeSingle" checked>
+        Einzelspieler
+      </label>
+      <label>
+        <input type="radio" name="mode" value="multi" id="modeMulti">
+        Mehrspieler
+      </label>
+    </div>
+    
+    <!-- Eingabebereich für Spieler -->
+    <div id="playerInputSingle" class="player-input">
+      <!-- Einzelspieler: ein Namensfeld -->
+      <label for="singlePlayerName">Spieler-Name:</label>
+      <input type="text" id="singlePlayerName" placeholder="Name des Spielers" />
+    </div>
+    <div id="playerInputMulti" class="player-input" style="display:none;">
+      <!-- Mehrspieler: mehrere Namenseingaben -->
+      <label for="multiPlayerName">Spieler hinzufügen:</label>
+      <input type="text" id="multiPlayerName" placeholder="Name eingeben" />
+      <button id="addPlayerBtn">Hinzufügen</button>
+      <!-- Liste der hinzugefügten Spieler -->
+      <ul id="playersList"></ul>
+    </div>
+    
+    <!-- Kategorieauswahl -->
+    <div class="category-select">
+      <label for="categorySelect">Kategorie:</label>
+      <select id="categorySelect">
+        <option value="Allgemein">Allgemein</option>
+        <option value="Zeichentrick">Zeichentrick</option>
+        <option value="Anime/Manga">Anime/Manga</option>
+        <option value="Sänger weltweit">Sänger weltweit</option>
+        <option value="Sänger Türkei">Sänger Türkei</option>
+        <option value="Schauspieler (international)">Schauspieler (international)</option>
+        <option value="Türkische Schauspieler">Türkische Schauspieler</option>
+        <option value="Deutsche Politiker">Deutsche Politiker</option>
+        <option value="Türkische Politiker">Türkische Politiker</option>
+        <option value="Legenden">Legenden</option>
+      </select>
+    </div>
+    
+    <!-- Timer-Option -->
+    <div class="timer-option">
+      <label>
+        <input type="checkbox" id="useTimer">
+        Mit Zeitlimit spielen (60 Sekunden pro Runde)
+      </label>
+    </div>
+    
+    <!-- Spiel starten -->
+    <button id="startGameBtn">Spiel starten</button>
+  </div>
+  
+  <!-- Spielbereich: Anzeige des Namens, Buttons für Aktionen und Scoreboard -->
+  <div id="gameScreen" style="display:none;">
+    <!-- Aktuelle Kategorie und Spieleranzeige -->
+    <div id="topBar">
+      <span id="currentPlayerName"></span>
+      <span id="categoryName"></span>
+      <span id="timerDisplay"></span>
+    </div>
+    
+    <!-- Bereich, in dem der zu ratende Name groß angezeigt wird -->
+    <div id="nameDisplay">Drücke "Zufällig" für einen Namen</div>
+    
+    <!-- Button für zufälligen Namen + manuelle Namenseingabe -->
+    <div id="controls">
+      <button id="randomNameBtn">🎲 Zufällig</button>
+      <input type="text" id="manualNameInput" placeholder="Name manuell eingeben">
+      <button id="showNameBtn">Anzeigen</button>
+    </div>
+    
+    <!-- Buttons für Erraten/Nicht erraten -->
+    <div id="resultButtons">
+      <button id="notGuessedBtn" class="not-guessed">Nicht erraten</button>
+      <button id="guessedBtn" class="guessed">Erraten</button>
+    </div>
+    
+    <!-- Punktestand / Scoreboard -->
+    <div id="scoreboardContainer">
+      <h2>Punktestand</h2>
+      <ul id="scoreboard"></ul>
+      <!-- Button für nächsten Spieler (nur Mehrspieler) -->
+      <button id="nextPlayerBtn">Nächster Spieler</button>
+    </div>
+  </div>
+  
+  <!-- Einbindung der JavaScript-Datei -->
+  <script src="script.js"></script>
+</body>
+</html>
+
